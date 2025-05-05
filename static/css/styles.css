@@ -1,0 +1,136 @@
+/* Background styling for the whole body */
+body {
+    background-image: url('/static/images/space.png'); /* Space background image */
+    background-size: cover; /* Ensure the background covers the whole screen */
+    background-attachment: fixed; /* Keep the background fixed when scrolling */
+    background-position: center; /* Center the background image */
+    font-family: 'Inter', sans-serif; /* Set the font to 'Inter' for readability */
+    color: #ffffff; /* Set the default text color to white */
+}
+
+/* Styling for the navigation bar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9) !important; /* Dark background for navbar */
+}
+
+/* Navbar link and brand text color */
+.navbar-brand, .nav-link {
+    color: #ffffff !important; /* Make the navbar text white */
+}
+
+/* Hover effect for navbar links */
+.nav-link:hover {
+    color: #a0c4ff !important; /* Change link color to light blue on hover */
+}
+
+/* Card component styling */
+.card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add a shadow effect to cards */
+    transition: transform 0.2s; /* Smooth transform transition for hover */
+    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent background */
+    height: 250px; /* Set a fixed height for the cards */
+    max-width: 6000px; /* Allow the card to expand, but this may be too high */
+    /* For brighter backgrounds, use: background-color: rgba(0, 0, 0, 0.85); */
+}
+
+/* Hover effect for the card */
+.card:hover {
+    transform: translateY(-5px); /* Slightly lift the card on hover */
+}
+
+/* Card image styling */
+.card-img-top {
+    height: 200px; /* Set the height of the image */
+    max-width: 600px; /* Limit the width of the image */
+    object-fit: cover; /* Ensure the image covers the card without distortion */
+}
+
+/* Styling for the alert messages */
+.alert {
+    max-width: 600px; /* Limit alert width */
+    margin: 0 auto; /* Center align the alert */
+    border-radius: 8px; /* Rounded corners for the alert box */
+    background-color: rgba(255, 193, 7, 0.9); /* Yellow background with slight transparency */
+    color: #333; /* Dark text color for visibility */
+}
+
+/* Primary button styling */
+.btn-primary {
+    background-color: #1a73e8; /* Set the primary button color */
+    border-color: #1a73e8; /* Set the border color */
+}
+
+/* Hover effect for the primary button */
+.btn-primary:hover {
+    background-color: #1557b0; /* Darker blue on hover */
+    border-color: #1557b0; /* Darker border on hover */
+}
+
+/* Success button styling */
+.btn-success {
+    background-color: #28a745; /* Green background for success button */
+    border-color: #28a745; /* Matching green border */
+}
+
+/* Hover effect for the success button */
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #218838; /* Darker green border on hover */
+    height: 20px; /* Adjust height on hover */
+    max-width: 60px; /* Limit the button's width */
+}
+
+/* Input field styling */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.9); /* Light semi-transparent background */
+    color: #333; /* Dark text color */
+}
+
+/* Focused state of the input field */
+.form-control:focus {
+    border-color: #1a73e8; /* Blue border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25); /* Subtle shadow effect on focus */
+}
+
+/* Form text styling (helper text under input fields) */
+.form-text {
+    color: #d1d1d1; /* Light gray color for helper text */
+}
+
+/* Spinner size */
+.spinner-border {
+    width: 2rem; /* Set the width of the loading spinner */
+    height: 2rem; /* Set the height of the loading spinner */
+}
+
+/* Header styling for h1 and h3 */
+h1, h3 {
+    font-weight: 600; /* Bold text */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow behind text for better readability */
+}
+
+/* Overlay effect for the background */
+body::before {
+    content: ''; /* Empty content for the overlay */
+    position: fixed; /* Fixed positioning so the overlay covers the whole screen */
+    top: 0; /* Start from the top */
+    left: 0; /* Start from the left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: -1; /* Keep the overlay behind other content */
+}
+
+/* Button alignment and width */
+.btn {
+    display: block; /* Make buttons block elements */
+    margin: 0 auto; /* Center align the buttons */
+    width: fit-content; /* Button width adjusts based on content */
+}
+
+/* Submit button specific styling */
+#submit-btn {
+    display: block; /* Ensure the submit button is displayed as a block */
+    margin: 0 auto; /* Center align the submit button */
+    width: fit-content; /* Adjust the submit button width based on content */
+}

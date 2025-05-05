@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Standard character encoding and responsive design setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Webpage title shown on browser tab -->
+    <title>Satellite Image Processor - Results</title>
+
+    <!-- Bootstrap CSS for layout and styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts - Inter font used for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Link to custom stylesheet stored in 'static/css' folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Navigation bar that remains fixed at the top -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <!-- Brand name/logo -->
+            <a class="navbar-brand" href="/">Satellite Image Processor</a>
+
+            <!-- Toggler for smaller screens (hamburger menu) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation menu items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Home navigation link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <!-- Upload page link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('input_page') }}">Upload</a>
+                    </li>
+                    <!-- About Us link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about_page') }}">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content container -->
+    <div class="container mt-5 pt-5">
+        <!-- Page header -->
+        <h1 class="text-center mb-4 text-white">Processing Results</h1>
+
+        <!-- Flash messages for dynamic user feedback (like errors or success messages) -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" aria-live="assertive">
+                    {{ messages[-1] }}
+                    <!-- Close button for the alert -->
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Card displaying key metrics from image processing -->
+        <div class="card p-4 mb-4 bg-dark bg-opacity-75 text-white">
+            <h3>Results</h3>
+            <!-- Shows average brightness of all uploaded images -->
+            <p><strong>Global Average Intensity:</strong> {{ global_avg | round(2) }}</p>
+
+            <!-- Shows how many images passed validation checks -->
+            <p><strong>Validation Score:</strong> {{ score }}/{{ total_images }}</p>
+
+            <!-- Processing time for entire batch -->
+            <p><strong>Processing Time:</strong> {{ processing_time | round(2) }} seconds</p>
+
+            <!-- Download link for the output ZIP file if it exists -->
+            {% if download_zip %}
+                <a href="{{ url_for('download_file', filename=download_zip) }}" class="btn btn-success mt-2">Download Normalized Images</a>
+            {% endif %}
+        </div>
+
+        <!-- Display each processed image in a grid -->
+        <div class="row">
+            {% for url in image_urls %}
+                <div class="col-md-3 mb-4">
+                    <!-- Card for each image with dark styling -->
+                    <div class="card bg-dark bg-opacity-75 text-white">
+                        <!-- Image thumbnail -->
+                        <img src="{{ url }}" class="card-img-top" alt="Normalized Image">
+                        <!-- Filename display -->
+                        <div class="card-body">
+                            <p class="card-text text-center">{{ url.split('/')[-1] }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript for enabling components like collapsibles and alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript (e.g., for file preview, spinner logic, etc.) -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
