@@ -25,8 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
         # Runs a single command using the runners shell
-      - name: pip install -r requirements
-        run: pip install -r requirements
+      - name: pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       # Runs a single command using the runners shell
       - name: python app.py
