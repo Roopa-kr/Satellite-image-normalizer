@@ -183,6 +183,9 @@ def download_file(filename):
     except Exception as e:
         flash(f'Error downloading file: {str(e)}')
         return redirect(url_for('output_page'))
+@app.route('/ping')
+def ping():
+    return 'Pong!'
 
 # Start the Flask development server
 if __name__ == '__main__':
