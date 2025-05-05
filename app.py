@@ -4,7 +4,7 @@ import zipfile  # To extract ZIP files
 import shutil  # For file operations like copy and delete
 from flask import Flask, request, render_template, send_file, flash, redirect, url_for, session  # Flask web framework
 from werkzeug.utils import secure_filename  # To securely handle uploaded file names
-from PIL import Image, UnidentifiedImageError  # For working with image files
+from PIL import Image, UnidentifiedImageError  # For working with image file
 import numpy as np  # For image array processing
 import time  # For measuring processing time
 
