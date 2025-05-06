@@ -4,3 +4,4 @@ Werkzeug==3.0.0  # Comes with Flask, for secure file handling
 Pillow==10.0.0  # For image processing (PIL)
 numpy==1.26.0  # For image array processing
 gunicorn==21.2.0 
+waitress==3.0.2
