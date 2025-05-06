@@ -7,6 +7,10 @@ from werkzeug.utils import secure_filename  # To securely handle uploaded file n
 from PIL import Image, UnidentifiedImageError  # For working with image file
 import numpy as np  # For image array processing
 import time  # For measuring processing time
+from waitress import serve
+from app import app  # Ensure this imports your Flask app correctly
+
+
 
 # Create a Flask app instance
 app = Flask(__name__)
@@ -189,4 +193,4 @@ def ping():
 
 # Start the Flask development server
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    serve(app, host='0.0.0.0', port=8000)
